@@ -1,0 +1,55 @@
+.Card {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+}
+
+.Card h1,
+.Card h2 {
+  padding: 0;
+  margin: 0;
+}
+
+.Card header h1 {
+  font-size: 1.2rem;
+}
+
+.Card header h2 {
+  font-size: .8rem;
+}
+
+.Card .body {
+  text-align: center;
+  position: relative;
+}
+
+.Card .image img {
+  width: 100%
+}
+
+.Card .details {
+  width: 100%;
+  min-height: 35%;
+  font-size: 1.2rem;
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border: .6rem black solid;
+  border-top: none;
+  padding: .2rem;
+  background-color: hsl(202, 54%, 85%);
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.Card .details .pt {
+  text-align: right;
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+}
+
+.Card .body:hover .details {
+  display: block;
+}

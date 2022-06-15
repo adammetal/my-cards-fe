@@ -1,0 +1,7 @@
+.Placeholder {
+  width: 280px;
+  height: 390px;
+  background-color: rgb(151, 151, 151);
+  border: .8rem solid black;
+  border-radius: 10px;
+}

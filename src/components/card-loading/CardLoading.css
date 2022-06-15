@@ -1,0 +1,25 @@
+.CardLoading {
+  display: flex;
+  flex-direction: column;
+  animation-duration: 3s;
+  animation-name: blinking;
+  animation-iteration-count: infinite;
+}
+
+.CardLoading div:first-child {
+  background-color: rgb(176, 176, 176);
+  margin: 2px;
+  flex: 1;
+}
+
+.CardLoading div:last-child div {
+  width: 280px;
+  height: 390px;
+  background-color: rgb(151, 151, 151);
+  border: .8rem solid black;
+  border-radius: 10px;
+}
+
+@keyframes blinking {
+  50% { opacity: .5; }
+}

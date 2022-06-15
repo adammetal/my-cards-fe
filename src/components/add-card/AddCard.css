@@ -1,0 +1,35 @@
+.AddCard .new-card {
+  width: 280px;
+  height: 390px;
+  background-color: burlywood;
+  border: .6rem solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.AddCard h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.AddCard .new-card input {
+  display: block;
+  padding: .5rem;
+  outline: none;
+  border: none;
+  font-size: 1.2rem;
+  width: 230px;
+  margin: 1rem auto;
+}
+
+.AddCard .new-card button {
+  font-size: 1.5rem;
+}
+
+.AddCard .new-card div:nth-child(2) {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

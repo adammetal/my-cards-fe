@@ -1,0 +1,53 @@
+.Deck {
+  display: grid;
+  margin: 1rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.Deck.hidden .Card {
+  display: none;
+}
+
+.Deck .title h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.Deck .title {
+  grid-column-start: span 4;
+}
+
+@media screen and (max-width: 1200px) {
+  .Deck {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .Deck .title {
+    grid-column-start: span 3;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .Deck {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .Deck .title {
+    grid-column-start: span 2;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .Deck {
+    grid-template-columns: 1fr;
+  }
+
+  .Deck .title {
+    grid-column-start: span 1;
+  }
+}
+
+
+
+
