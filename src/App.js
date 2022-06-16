@@ -1,10 +1,19 @@
+import { Suspense } from "react";
+import Deck from "./components/deck";
+import wrapPromise from "./wrap-promise";
+
 import "./App.css";
-import Deck from "./components/decks/Deck";
+
+const fetchCards = async () => (await fetch("/api/cards")).json();
+
+const cardsResource = wrapPromise(fetchCards());
 
 function App() {
   return (
     <main>
-      <Deck />
+      <Suspense fallback="Loading...">
+        <Deck cardsResource={cardsResource} />
+      </Suspense>
     </main>
   );
 }

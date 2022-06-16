@@ -4,21 +4,26 @@ import CardLoading from "../card-loading";
 
 import "./Deck.css";
 
-function Deck() {
+function Deck({ cardsResource }) {
+  const cards = cardsResource.read();
+
   return (
     <div className="Deck">
       <header className="title">
         <button>
-          <h1>Merfolk Aggro</h1>
+          <h1>Deck Title</h1>
         </button>
       </header>
       <AddCard />
       <CardLoading />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      {cards.map((card) => (
+        <Card
+          key={card.id}
+          name={card.name}
+          count={card.count}
+          id={card.id}
+        />
+      ))}
     </div>
   );
 }

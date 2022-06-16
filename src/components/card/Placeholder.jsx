@@ -1,7 +1,7 @@
 import "./Placeholder.css";
 
-function Placeholder() {
-  return <div className="Placeholder" />;
+function Placeholder({ loading }) {
+  return <div className={`Placeholder ${loading ? "loading" : ""}`} />;
 }
 
 export default Placeholder;

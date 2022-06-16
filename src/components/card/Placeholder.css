@@ -5,3 +5,13 @@
   border: .8rem solid black;
   border-radius: 10px;
 }
+
+.Placeholder.loading {
+  animation-duration: 3s;
+  animation-name: blinking-placeholder;
+  animation-iteration-count: infinite;
+}
+
+@keyframes blinking-placeholder {
+  50% { opacity: .2; }
+}

@@ -1,32 +1,63 @@
-import "./Card.css";
+import { Suspense, useEffect, useState } from "react";
+import Placeholder from "./Placeholder";
+import wrapPromise from "../../wrap-promise";
+import Meta from "./Meta";
 
-function Card() {
+import "./Card.css";
+import SubHeader from "./SubHeader";
+
+const fetchCardMeta = (id, { signal }) =>
+  fetch(`/api/cards/${id}/meta`, { signal })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      return null;
+    })
+    .catch((err) => {
+      console.log("aborted");
+      console.log(err);
+      return null;
+    });
+
+function Card(props) {
+  const { name, count, id } = props;
+  const [resource, setResource] = useState();
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const promise = fetchCardMeta(id, controller);
+
+    setResource(wrapPromise(promise));
+
+    return () => {
+      controller.abort();
+    };
+  }, [id]);
+
   return (
     <div className="Card">
       <header>
         <h1>
-          <select>
+          <select defaultValue={count}>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
-            <option value="4" selected>4</option>
+            <option value="4">4</option>
           </select>
-          Merfolk Mistbinder
+          {name}
         </h1>
-        <h2>Creature — Merfolk Shaman [2]</h2>
+        {resource && (
+          <Suspense fallback="Loading...">
+            <SubHeader resource={resource} />
+          </Suspense>
+        )}
       </header>
-      <div className="body">
-        <div className="image">
-          <img
-            src="https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=439823&type=card"
-            alt="Merfolk Mistbinder"
-          />
-        </div>
-        <div className="details">
-          <div>Other Merfolk you control get +1/+1.</div>
-          <div className="pt">2 / 2</div>
-        </div>
-      </div>
+      {resource && (
+        <Suspense fallback={<Placeholder loading />}>
+          <Meta resource={resource} />
+        </Suspense>
+      )}
     </div>
   );
 }
